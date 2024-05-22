@@ -1,11 +1,12 @@
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
+import "dotenv/config";
 
 // Text
 const model = new ChatGoogleGenerativeAI({
   model: "gemini-pro",
   maxOutputTokens: 2048,
-  apiKey: "AIzaSyCdqoxYffTihe-3pwDM_zpSAwaP54Ru14I",
+  apiKey: process.env.GEMINI_KEY,
   safetySettings: [
     {
       category: HarmCategory.HARM_CATEGORY_HARASSMENT,
