@@ -1,6 +1,9 @@
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
 import { PromptTemplate } from "@langchain/core/prompts";
+import { TextLoader } from "langchain/document_loaders/fs/text";
+import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
+import { Document } from "langchain/document";
 
 import "dotenv/config";
 
@@ -71,5 +74,21 @@ const formattedPrompt = await prompt.format({
 // console.log(formattedPrompt);
 
 const chatResponse = await model.invoke([["human", formattedPrompt]]);
+
+// LOADING TEXT
+// const loader = new TextLoader("./beatoInfo.txt");
+// const docs = await loader.load();
+
+// SPLITTING DOCUMENTS TO STORE IN VECTOR
+// const splitter = new RecursiveCharacterTextSplitter({
+//   chunkSize: 10,
+//   chunkOverlap: 1,
+// });
+
+// const splittedText = await splitter.splitDocuments([
+//   new Document({ pageContent: docs }),
+// ]);
+
+// console.log(splittedText);
 
 console.log(chatResponse);
