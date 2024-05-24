@@ -29,6 +29,11 @@ Community Support: Connect with other users for support and motivation.
 
 BeatO aims to make diabetes management simpler and more effective by leveraging technology to provide real-time data, insights, and professional support.
 
+
+-------------- USER CONTEXT --------------------
+user name: {userName}
+-------------- USER CONTEXT --------------------
+
 Below is the user question:
 {userQuestion}
 `;
@@ -69,7 +74,16 @@ const model = new ChatGoogleGenerativeAI({
 
 const formattedPrompt = await prompt.format({
   userQuestion: "I am a pre prediabetic. Which care plan is good for me",
+  userName: "John",
 });
+// const formattedPrompt = await prompt.format({
+//   userQuestion: "Is it good?",
+//   userName: "John",
+// });
+// const formattedPrompt = await prompt.format({
+//   userQuestion: "Can i buy medicines in BeatO",
+//   userName: "Jane",
+// });
 
 // console.log(formattedPrompt);
 
